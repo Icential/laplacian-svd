@@ -18,8 +18,8 @@ def size_reducer(img, biggest_length):
 
 def resized_imgs(img, smallest_length=50, increment=10):
     h, w = img.shape[:2]
-    min_dim = min(h, w)
-    sizes = list(range(smallest_length, min_dim + 1, increment))
+    max_dim = max(h, w)
+    sizes = list(range(smallest_length, max_dim + 1, increment))
     resized_list = [size_reducer(img, size) for size in sizes]
     reresized_list = [cv.resize(rimg, (w, h)) for rimg in resized_list]
     return reresized_list, sizes
